@@ -62,9 +62,8 @@ already exist. According to the [Pandoc manual][1]:
 
 Note that “UNIX” here includes Linux and MacOS.
 
-`USERNAME` does *not* mean that you should type
-<!-- Caps Lock USERNAME --> <kbd>Caps
-Lock</kbd><kbd>U</kbd><kbd>S</kbd><kbd>E</kbd><kbd>R</kbd><kbd>N</kbd><kbd>A</kbd><kbd>M</kbd><kbd>E</kbd>,
+`USERNAME` does *not* mean that you should type <!-- Caps Lock USERNAME -->
+<kbd>CapsLock</kbd><kbd>U</kbd><kbd>S</kbd><kbd>E</kbd><kbd>R</kbd><kbd>N</kbd><kbd>A</kbd><kbd>M</kbd><kbd>E</kbd>,
 but that you should substitute the name of your user account for it.
 
 To find out where Pandoc expects to find your data directory run the
