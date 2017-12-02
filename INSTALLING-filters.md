@@ -1,3 +1,18 @@
+# Installing
+
+-   [Make pandoc find (any) filters][]
+-   [Installing perl and Perl modules][]
+    -   [Installing modules][]
+    -   [Installing perl][]
+
+  [Installing]: #installing
+  [Make pandoc find (any) filters]: #make-pandoc-find-any-filters
+  [Installing perl and Perl modules]: #installing-perl-and-perl-modules
+  [Installing modules]: #installing-modules
+  [Installing perl]: #installing-perl
+
+## Make pandoc find (any) filters
+
 This is only a brief guide on making Pandoc filters available from
 anywhere on your system by running a command of the form
 
@@ -7,9 +22,9 @@ anywhere on your system by running a command of the form
 is `pandoc-filter.pl`. It can of course be written in any language/have
 any filename extension which Pandoc recognises.)
 
-To quote the [Pandoc manual][filterdir]:
+To quote the [Pandoc manual][]:
 
-  [filterdir]: https://github.com/jgm/pandoc/blob/ecfb5a08381dcfd3eb1c586ceb6cbc3aea96a7d5/MANUAL.txt#L475
+  [Pandoc manual]: https://github.com/jgm/pandoc/blob/ecfb5a08381dcfd3eb1c586ceb6cbc3aea96a7d5/MANUAL.txt#L475
 
 > In order of preference, pandoc will look for filters in
 >
@@ -20,19 +35,18 @@ To quote the [Pandoc manual][filterdir]:
 >
 > 3.  `$PATH` (executable only)
 >
-
 For those who are new to the command line 2. is probably the easiest
-option. What follows is a short guide to how to set it up and how it
-works.
+option — it certainly is on Windows. What follows is a short guide to
+how to set it up and how it works.
 
 The wording of the manual may make it seem like there exists an
 environment variable `DATADIR`; this is not the case, unfortunately (or
 fortunately, since *if* it existed it should be called something like
 `PANDOC_DATADIR`!) The first thing you must do is thus to find out where
 your Pandoc data directory (aka folder) is, or should be if it doesn’t
-already exist. According to the [Pandoc manual][datadir]:
+already exist. According to the [Pandoc manual][1]:
 
-  [datadir]: https://github.com/jgm/pandoc/blob/ecfb5a08381dcfd3eb1c586ceb6cbc3aea96a7d5/MANUAL.txt#L347
+  [1]: https://github.com/jgm/pandoc/blob/ecfb5a08381dcfd3eb1c586ceb6cbc3aea96a7d5/MANUAL.txt#L347
 
 > This is, in UNIX:
 >
@@ -48,8 +62,9 @@ already exist. According to the [Pandoc manual][datadir]:
 
 Note that “UNIX” here includes Linux and MacOS.
 
-`USERNAME` does *not* mean that you should type <!-- Caps Lock USERNAME -->
-<kbd>Caps Lock</kbd><kbd>U</kbd><kbd>S</kbd><kbd>E</kbd><kbd>R</kbd><kbd>N</kbd><kbd>A</kbd><kbd>M</kbd><kbd>E</kbd>,
+`USERNAME` does *not* mean that you should type
+<!-- Caps Lock USERNAME --> <kbd>Caps
+Lock</kbd><kbd>U</kbd><kbd>S</kbd><kbd>E</kbd><kbd>R</kbd><kbd>N</kbd><kbd>A</kbd><kbd>M</kbd><kbd>E</kbd>,
 but that you should substitute the name of your user account for it.
 
 To find out where Pandoc expects to find your data directory run the
@@ -118,3 +133,54 @@ why this repository eventually will contain all my filters. You can then
 and then use any of my filters with
 
     pandoc -F bpj/pandoc-filter.pl ...
+
+## Installing perl and Perl modules
+
+### Installing modules
+
+If you already have perl (on Windows: Strawberry Perl) installed run
+these commands on the command line to install all [CPAN][] dependencies
+of any of the programs in this repository:
+
+  [CPAN]: http://www.cpan.org/misc/cpan-faq.html#What_is_CPAN
+
+    cpan App::cpanminus
+    cpanm Perl::PrereqScanner
+    scan-perl-prereqs script-name.pl | cpanm
+
+In the last line you need to replace `script-name.pl` with the name of
+the program, possibly including the path to the program, either relative
+to the directory (folder) you are in, or an absolute path. You may also
+need to run with `sudo` (on Linux or Mac) or as administrator (on
+Windows).
+
+### Installing perl
+
+The programs in this repository require [perl][] (minimum version usually
+5.10.1 aka `5.010001`) and the Perl modules listed under *PREREQUISITES*
+or *PREREQUISITES → CPAN* in the documentation of each program to
+function. If you haven’t used Perl before information on how to
+get/install perl and/or Perl modules can be found at the URLS below,
+which lead to the official information on these topics.
+
+  [perl]: https://www.perl.org/about.html "Official info on Perl"
+
+Don’t worry! If your operating system is Linux or Mac you probably
+already have a new enough version of perl installed. If you don’t or if
+your operating system is Windows it is easy to install a recent version,
+and once you have perl installed installing modules is very easy. Just
+follow the instructions linked to below.
+
+Getting perl: <https://www.perl.org/get.html>
+
+(For Windows I recommend Strawberry Perl as module installation is
+easier there.)
+
+Installing Perl modules: <http://www.cpan.org/modules/INSTALL.html>
+
+(Note: According to convention the spelling “perl” with a small *p*
+refers to the interpreter program (since `perl` is the command to run it
+from the command line), while the spelling “Perl” with a capital *P*
+refers to the language, or the language and the interpreter taken
+together. The spelling ~~PERL~~ is not used in the Perl community; thus
+it generally betrays ignorance.)
