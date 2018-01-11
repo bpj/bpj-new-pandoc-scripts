@@ -14,6 +14,7 @@ use Pandoc::Walker 0.27 qw[ action transform ];
 use String::Interpolate::Shell qw[ strinterp ];
 use Scalar::Util qw[ blessed ];
 
+use Try::Tiny;
 use Path::Tiny qw[ path cwd ];
 use YAML::Any qw[ LoadFile ];
 use Hash::Merge qw[ _merge_hashes ];
