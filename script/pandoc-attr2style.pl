@@ -81,7 +81,7 @@ STYLE_FILES: {
             $file_file->is_file or _error "Not a file: $file_file";
             $yaml_files = try { LoadFile( "$file_file" ) }
             catch { _error "Error loading YAML file '$file_file':\n$_" };
-            is_array_ref $yaml_files
+            'ARRAY' eq uc ref $yaml_files
               or _error "Expected YAML file to contain a list: $file_file";
         }
         else {
@@ -107,7 +107,7 @@ STYLE_FILES: {
             $file or _error "File not found or not a file: $fn";
             my $hash = try { LoadFile( "$file" ) }
             catch { _error "Error loading YAML file '$file':\n$_" };
-            is_hash_ref $hash
+            'HASH' eq uc ref $hash
                 or _error "Expected YAML file to contain a mapping at the top level: $file";
             $file = $hash;
         }
